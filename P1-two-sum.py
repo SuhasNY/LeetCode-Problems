@@ -1,15 +1,8 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        result = []
-        for i in range(0, len(nums)):
-            if len(result) != 0:
-                break
-            for j in range(0, len(nums)):
-                if i == j:
-                    continue
-                elif nums[i] + nums[j] == target:
-                    result.append(i)
-                    result.append(j)
-                    break
-            
-        return result
+        visited = {} 
+        for i, n in enumerate(nums):
+            difference = target - n
+            if difference in visited:
+                return [visited[difference], i]
+            visited[n] = i
